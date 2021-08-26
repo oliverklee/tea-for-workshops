@@ -21,6 +21,8 @@ class Tea extends AbstractEntity
     #[Extbase\Validate(['validator' => 'StringLength', 'options' => ['maximum' => 2000]])]
     protected string $description = '';
 
+    private string $internalNotes;
+
     #[Extbase\ORM\Lazy]
     protected FileReference|LazyLoadingProxy|null $image = null;
 
@@ -47,6 +49,14 @@ class Tea extends AbstractEntity
     public function setDescription(string $description): void
     {
         $this->description = $description;
+    }
+
+    public function getInternalNotes(): string {
+        return $this->internalNotes;
+    }
+
+    public function setInternalNotes(string $notes): void {
+        $this->internalNotes = $notes;
     }
 
     public function getImage(): ?FileReference
