@@ -29,7 +29,7 @@ $tca = [
         '1' => [
             'showitem' =>
                 '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
-                    title, description, image, owner,
+                    title, description, internalNotes, image, owner,
                  --div--;LLL:EXT:tea/Resources/Private/Language/locallang_db.xlf:tx_tea_domain_model_tea.tabs.access,
                     --palette--;;hidden,
                     --palette--;;access,',
@@ -144,6 +144,16 @@ $tca = [
             'config' => [
                 'type' => 'text',
                 'enableRichtext' => true,
+                'rows' => 8,
+                'cols' => 40,
+                'max' => 2000,
+                'eval' => 'trim',
+            ],
+        ],
+        'internalNotes' => [
+            'label' => 'LLL:EXT:tea/Resources/Private/Language/locallang_db.xlf:tx_tea_domain_model_product_tea.internalNotes',
+            'config' => [
+                'type' => 'text',
                 'rows' => 8,
                 'cols' => 40,
                 'max' => 2000,
