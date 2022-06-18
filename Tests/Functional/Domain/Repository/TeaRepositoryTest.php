@@ -98,6 +98,7 @@ final class TeaRepositoryTest extends FunctionalTestCase
         self::assertSame('Earl Grey', $model->getTitle());
         self::assertSame('Fresh and hot.', $model->getDescription());
         self::assertSame(2, $model->getOwnerUid());
+        // @todo: add test for reading the `internalNotes` property (needs additions to the SQL and the TCA)
     }
 
     /**
@@ -190,4 +191,8 @@ final class TeaRepositoryTest extends FunctionalTestCase
         $result->rewind();
         self::assertSame('Assam', $result->current()->getTitle());
     }
+
+    // @todo: Add tests for a to-be-written method `findByFullText` that searches for substrings using `LIKE`
+    // in title and description.
+    // Also test with a title that contains a percent sign (to make sure the escaping is correct).
 }
