@@ -19,7 +19,7 @@ class Tea extends AbstractEntity
     protected string $title = '';
 
     #[Extbase\Validate(['validator' => 'StringLength', 'options' => ['maximum' => 2000]])]
-    protected string $description = '';
+    protected string $description;
 
     private string $internalNotes;
 
