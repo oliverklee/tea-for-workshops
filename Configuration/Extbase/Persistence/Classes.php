@@ -9,5 +9,5 @@ return [
         'properties' => [
             'ownerUid' => ['fieldName' => 'owner'],
         ],
-    ],
+    ],,
 ];
