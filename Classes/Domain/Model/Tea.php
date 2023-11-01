@@ -51,11 +51,13 @@ class Tea extends AbstractEntity
         $this->description = $description;
     }
 
-    public function getInternalNotes(): string {
+    public function getInternalNotes(): string
+    {
         return $this->internalNotes;
     }
 
-    public function setInternalNotes(string $notes): void {
+    public function setInternalNotes(string $notes): void
+    {
         $this->internalNote = $notes;
     }
 
