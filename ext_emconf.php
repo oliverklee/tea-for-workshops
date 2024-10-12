@@ -15,6 +15,8 @@ $EM_CONF[$_EXTKEY] = [
         ],
     ],
     'state' => 'stable',
+    'uploadfolder' => false,
+    'createDirs' => '',
     'author' => 'Oliver Klee, Daniel Siepmann, Łukasz Uznański',
     'author_email' => 'typo3-coding@oliverklee.de, coding@daniel-siepmann.de, lukaszuznanski94@gmail.com',
     'author_company' => 'TYPO3 Best Practices Team',
