@@ -29,7 +29,7 @@ $tca = [
         '1' => [
             'showitem' =>
                 '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
-                    title, description, image, owner,
+                    title, description, image, owner, rating
                  --div--;LLL:EXT:tea/Resources/Private/Language/locallang_db.xlf:tx_tea_domain_model_tea.tabs.access,
                     --palette--;;hidden,
                     --palette--;;access,',
@@ -148,6 +148,43 @@ $tca = [
                 'cols' => 40,
                 'max' => 2000,
                 'eval' => 'trim',
+            ],
+        ],
+        'rating' => [
+            'label' => 'LLL:EXT:tea/Resources/Private/Language/locallang_db.xlf:tx_tea_domain_model_tea.rating',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    [
+                        'label' => ' ',
+                        'value' => 0,
+                    ],
+                    [
+                        'label' => '*',
+                        'value' => 1,
+                    ],
+                    [
+                        'label' => '**',
+                        'value' => 2,
+                    ],
+                    [
+                        'label' => '***',
+                        'value' => 3,
+                    ],
+                    [
+                        'label' => '****',
+                        'value' => 4,
+                    ],
+                    [
+                        'label' => '*****',
+                        'value' => 5,
+                    ],
+                ],
+                'size' => 40,
+                'max' => 255,
+                'eval' => 'trim',
+                'required' => true,
             ],
         ],
         'image' => [

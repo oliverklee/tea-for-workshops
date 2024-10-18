@@ -25,6 +25,8 @@ class Tea extends AbstractEntity
      */
     protected string $description = '';
 
+    protected int $rating = 0;
+
     /**
      * @var FileReference|null
      * @phpstan-var FileReference|LazyLoadingProxy|null
@@ -57,6 +59,22 @@ class Tea extends AbstractEntity
     public function setDescription(string $description): void
     {
         $this->description = $description;
+    }
+
+    public function getRating(): int
+    {
+        return $this->rating;
+    }
+
+    public function setRating(int $rating): void
+    {
+        if ($rating < 0) {
+            throw new \InvalidArgumentException('Rating must not be less than 0.', 1729086648);
+        }
+        if ($rating > 5) {
+            throw new \InvalidArgumentException('Rating must not be greater than 5.', 1729086972);
+        }
+        $this->rating = $rating;
     }
 
     public function getImage(): ?FileReference

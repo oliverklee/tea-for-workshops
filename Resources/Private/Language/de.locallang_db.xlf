@@ -19,6 +19,10 @@
 				<source>Description</source>
 				<target>Beschreibung</target>
 			</trans-unit>
+			<trans-unit id="tx_tea_domain_model_tea.rating" resname="tx_tea_domain_model_tea.rating" approved="yes">
+				<source>Rating</source>
+				<target>Bewertung</target>
+			</trans-unit>
 			<trans-unit id="tx_tea_domain_model_tea.image" resname="tx_tea_domain_model_tea.image" approved="yes">
 				<source>Image</source>
 				<target>Bild</target>

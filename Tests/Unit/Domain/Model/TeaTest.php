@@ -72,6 +72,66 @@ final class TeaTest extends UnitTestCase
     /**
      * @test
      */
+    public function getRatingInitiallyReturnsZero(): void
+    {
+        self::assertSame(0, $this->subject->getRating());
+    }
+
+    /**
+     * @return \int[][]
+     */
+    public static function validRatingDataProvider(): array
+    {
+        return [
+           [0],
+           [1],
+           [2],
+           [3],
+           [4],
+           [5],
+        ];
+    }
+
+    /**
+     * @test
+     * @dataProvider validRatingDataProvider
+     */
+    public function setRatingSetsRating($rating): void
+    {
+        $this->subject->setRating($rating);
+
+        self::assertSame($rating, $this->subject->getRating());
+    }
+
+    /**
+     * @test
+     * @return void
+     */
+    public function setRatingWithRatingLessZeroThrowsException(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Rating must not be less than 0.');
+        $this->expectExceptionCode( 1729086648);
+
+        $this->subject->setRating(-1);
+    }
+
+    /**
+     * @test
+     * @return void
+     */
+    public function setRatingWithRatingGreaterFiveThrowsException(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Rating must not be greater than 5.');
+        $this->expectExceptionCode( 1729086972);
+
+        $this->subject->setRating(6);
+    }
+
+    /**
+     * @test
+     */
     public function getImageInitiallyReturnsNull(): void
     {
         self::assertNull($this->subject->getImage());

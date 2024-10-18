@@ -3,6 +3,7 @@ CREATE TABLE tx_tea_domain_model_tea (
     description varchar(2000)    DEFAULT ''  NOT NULL,
     image       int(11) unsigned DEFAULT '0' NOT NULL,
     owner       int(11) unsigned DEFAULT '0' NOT NULL,
+		rating			int(2) unsigned DEFAULT '0' NOT NULL,
 
     KEY owner (owner)
 );

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use TTN\Tea\Controller\FrontEndEditorController;
 use TTN\Tea\Controller\TeaController;
+use TTN\Tea\Controller\TopTeaController;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
 defined('TYPO3') or die('Access denied.');
@@ -31,6 +32,17 @@ ExtensionUtility::configurePlugin(
     ],
     [
         TeaController::class => '',
+    ]
+);
+
+ExtensionUtility::configurePlugin(
+    'Tea',
+    'TopTeaIndex',
+    [
+        TopTeaController::class => 'index',
+    ],
+    [
+        TopTeaController::class => '',
     ]
 );
 

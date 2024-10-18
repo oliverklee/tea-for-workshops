@@ -98,6 +98,7 @@ final class TeaRepositoryTest extends FunctionalTestCase
         self::assertSame('Earl Grey', $model->getTitle());
         self::assertSame('Fresh and hot.', $model->getDescription());
         self::assertSame(2, $model->getOwnerUid());
+        self::assertSame(3, $model->getRating());
     }
 
     /**
@@ -190,4 +191,84 @@ final class TeaRepositoryTest extends FunctionalTestCase
         $result->rewind();
         self::assertSame('Assam', $result->current()->getTitle());
     }
+
+    /**
+     * @test
+     */
+    public function findTopTeasWithoutTeasReturnsEmptyResult(): void
+    {
+        $result = $this->subject->findTopTeas();
+
+        self::assertCount(0, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function findTopTeasReturnsTopTeas(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/TwoTopTeas.csv');
+        $result = $this->subject->findTopTeas();
+
+        self::assertCount(2, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function findTopTeasIgnoresNonTopTeas(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/NoTopTeas.csv');
+        $result = $this->subject->findTopTeas();
+
+        self::assertCount(0, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function findTopTeasReturnsTopTeasSortedDescendingByRating(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/TwoUnsortedTopTeas.csv');
+        $result = $this->subject->findTopTeas();
+
+        $result->rewind();
+        self::assertSame(5, $result->current()->getRating());
+        $result->next();
+        self::assertSame(1, $result->current()->getRating());
+    }
+
+    /**
+     * @test
+     */
+    public function findTopTeasWithTwoEquallyRatedTopTeasReturnsTopTeasSortedAlphabetically(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/TwoEquallyRatedTopTeas.csv');
+        $result = $this->subject->findTopTeas();
+
+        $result->rewind();
+        self::assertSame('Assam', $result->current()->getTitle());
+        $result->next();
+        self::assertSame('Zorro', $result->current()->getTitle());
+    }
+
+    /**
+     * @test
+     */
+    public function findTopTeasReturnsTopTeasSortedByRatingDescendingAndTitleAlphabetically(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/ThreeUnorderedTopTeas.csv');
+        $result = $this->subject->findTopTeas();
+
+        $result->rewind();
+        self::assertSame('Zorro', $result->current()->getTitle());
+        self::assertSame(5, $result->current()->getRating());
+        $result->next();
+        self::assertSame('Assam', $result->current()->getTitle());
+        self::assertSame(3, $result->current()->getRating());
+        $result->next();
+        self::assertSame('Earl Grey', $result->current()->getTitle());
+        self::assertSame(3, $result->current()->getRating());
+    }
+
 }
