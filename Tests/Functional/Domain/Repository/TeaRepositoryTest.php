@@ -270,5 +270,4 @@ final class TeaRepositoryTest extends FunctionalTestCase
         self::assertSame('Earl Grey', $result->current()->getTitle());
         self::assertSame(3, $result->current()->getRating());
     }
-
 }

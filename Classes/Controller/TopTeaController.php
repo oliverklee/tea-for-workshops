@@ -21,7 +21,7 @@ class TopTeaController extends ActionController
     public function indexAction(): ResponseInterface
     {
         $topTeas = $this->teaRepository->findTopTeas();
-        if (0 < $topTeas->count()) {
+        if ($topTeas->count() > 0) {
             $this->view->assign('topTeas', $topTeas);
         } else {
             $this->view->assign('error', 'No Top Teas found.');

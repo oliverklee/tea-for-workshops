@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace TTN\Tea\Domain\Repository;
 
 use TTN\Tea\Domain\Model\Tea;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
@@ -44,8 +43,9 @@ class TeaRepository extends Repository
         $query->setOrderings(
             [
                 'rating' => QueryInterface::ORDER_DESCENDING,
-                'title' => QueryInterface::ORDER_ASCENDING
-            ]);
+                'title' => QueryInterface::ORDER_ASCENDING,
+            ]
+        );
 
         return $query->execute();
     }

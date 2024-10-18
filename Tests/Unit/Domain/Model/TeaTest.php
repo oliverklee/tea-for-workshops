@@ -83,12 +83,12 @@ final class TeaTest extends UnitTestCase
     public static function validRatingDataProvider(): array
     {
         return [
-           [0],
-           [1],
-           [2],
-           [3],
-           [4],
-           [5],
+            [0],
+            [1],
+            [2],
+            [3],
+            [4],
+            [5],
         ];
     }
 
@@ -105,26 +105,24 @@ final class TeaTest extends UnitTestCase
 
     /**
      * @test
-     * @return void
      */
     public function setRatingWithRatingLessZeroThrowsException(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Rating must not be less than 0.');
-        $this->expectExceptionCode( 1729086648);
+        $this->expectExceptionCode(1729086648);
 
         $this->subject->setRating(-1);
     }
 
     /**
      * @test
-     * @return void
      */
     public function setRatingWithRatingGreaterFiveThrowsException(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Rating must not be greater than 5.');
-        $this->expectExceptionCode( 1729086972);
+        $this->expectExceptionCode(1729086972);
 
         $this->subject->setRating(6);
     }

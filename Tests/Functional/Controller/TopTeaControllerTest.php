@@ -47,7 +47,7 @@ final class TopTeaControllerTest extends FunctionalTestCase
         $request = new InternalRequest();
         $request = $request->withPageId(1);
 
-        $html = (string) $this->executeFrontendSubRequest($request)->getBody();
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
 
         self::assertStringContainsString('No Top Teas found.', $html);
     }
